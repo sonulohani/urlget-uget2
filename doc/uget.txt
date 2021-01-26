@@ -1,0 +1,99 @@
+
+ UgNode
+ |
+ `-- UgetNode (Root, Category, Download, File)
+
+-------------------------------------------------------------------------------
+ UgetNode Tree chart:
+
+ Root --+-- Category1 --+-- Download1 (URI)
+        |               |
+        |               |
+        |               |
+        |               `-- Download2 (URI)
+        |                   (torrent path)
+        |
+        |
+        `-- Category2 --+-- Download3 (URI)
+                        |   (metalink path)
+                        |
+                        |
+                        `-- Download4 (URI)
+
+-------------------------------------------------------------------------------
+ UgetNode Tree chart for "All Category" Real node and Fake node:
+
+   Real           Fake L1        Fake L2
+
+ Category0 --+
+ Category1 --+--> all ------+--> all active
+ Category2 --+              +--> all queuing
+                            +--> all finished
+                            `--> all recycled
+
+-------------------------------------------------------------------------------
+ UgetNode Tree chart for "All Status" Real node and Fake node:
+
+   Real           Fake
+
+ Category  --+--> active
+             +--> queuing
+             +--> finished
+             +--> recycled
+             |
+             `--> sorted
+
+-------------------------------------------------------------------------------
+
+1 category has 1 json file. Below is sample file.
+
+Category-Home.json
+{
+   "info": {
+      "category": {},
+      "common": {
+         "name": "Home"
+      },
+      "proxy": {},
+      "http": {},
+      "ftp": {}
+   },
+   "children": [
+      {
+         "info": {
+            "common": {
+               "name": "download-file1",
+               "file": "download-file1.torrent"
+            },
+            "files": {
+               "collection" : [
+                  {
+                     "name": "download-file1.zip",
+                     "type": 0
+                  }
+               ]
+            }
+            "proxy": {},
+            "http": {},
+            "ftp": {}
+         },
+         "children": [
+         ]
+      },
+      {
+         "info": {
+            "common": {
+               "name": "download-file3",
+               "file": "download-file3.7z"
+            },
+            "proxy": {},
+            "http": {},
+            "ftp": {}
+         },
+         "children": [
+         ]
+      }
+   ]
+}
+
+
